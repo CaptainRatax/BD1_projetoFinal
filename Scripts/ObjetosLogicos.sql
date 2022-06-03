@@ -146,3 +146,86 @@ BEGIN
 	ORDER BY GeoCenters.Name ASC
 END
 GO
+
+
+/* Quando uma reserva é inserida é verificado se as datas são válidas */
+IF OBJECT_ID('trReservationDateCheck') IS NOT NULL
+	DROP TRIGGER trReservationDateCheck
+GO
+CREATE TRIGGER trReservationDateCheck
+ON Reservations
+	FOR INSERT
+AS
+BEGIN
+	IF (SELECT inserted.StartDateTime FROM inserted) >= (SELECT inserted.EndDateTime FROM inserted)
+	BEGIN
+		DELETE FROM Reservations
+		WHERE Reservations.ID = (SELECT inserted.ID FROM inserted)
+
+		PRINT 'A data de início não pode ser inferior ou igual à data de fim!'
+	END
+END
+GO
+
+
+
+/* Processo armazenado que contém um cursor que desativa todas 
+	as salas de um certo GeoCenter */
+IF OBJECT_ID('proDeactivatesAllRoomsFromGeoCenter') IS NOT NULL
+	DROP PROCEDURE proDeactivatesAllRoomsFromGeoCenter
+GO
+
+CREATE PROC proDeactivatesAllRoomsFromGeoCenter
+	@GeoCenterID INT = NULL
+AS
+BEGIN
+	IF  @GeoCenterID = NULL
+		BEGIN
+			PRINT 'É necessário mencionar um @GeoCenterID'
+		END
+	ELSE
+		BEGIN
+			DECLARE @RoomID INT
+	
+			DECLARE curGeoCenterDeactivation CURSOR
+			FOR
+				SELECT Rooms.ID
+				FROM Rooms
+				WHERE Rooms.GeoCenter = @GeoCenterID
+			
+			OPEN curGeoCenterDeactivation
+				FETCH NEXT FROM curGeoCenterDeactivation
+				INTO @RoomID
+		
+				WHILE @@FETCH_STATUS = 0
+				BEGIN
+					UPDATE Rooms
+					SET IsActive = 0
+					WHERE Rooms.ID = @RoomID
+			
+					FETCH NEXT FROM curGeoCenterDeactivation
+					INTO @RoomID
+				END
+			CLOSE curGeoCenterDeactivation
+			DEALLOCATE curGeoCenterDeactivation
+		END
+END
+GO
+
+
+/* Quando um GeoCenter é desativado todas as salas do mesmo seram desativadas em seguida */
+IF OBJECT_ID('trGeoCenterDeactivationCheck') IS NOT NULL
+	DROP TRIGGER trGeoCenterDeactivationCheck
+GO
+CREATE TRIGGER trGeoCenterDeactivationCheck
+ON GeoCenters
+	FOR UPDATE
+AS
+BEGIN
+	DECLARE @isertedID INT = (SELECT inserted.ID FROM inserted);
+	IF (SELECT inserted.isActive FROM inserted) = 0
+	BEGIN
+		EXEC proDeactivatesAllRoomsFromGeoCenter @GeoCenterID = @isertedID
+	END
+END
+GO

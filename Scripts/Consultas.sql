@@ -63,7 +63,7 @@ WHERE ID = 3;
 
 /* Nº de reservas por range de datas */
 
-SELECT COUNT(Reservations.ID) FROM
+SELECT COUNT(Reservations.ID) AS 'Number of Reservations' FROM
 Reservations
 INNER JOIN Rooms ON Rooms.ID = Reservations.Room
 	WHERE
@@ -77,3 +77,4 @@ SELECT COUNT(ID) AS [Number of Users] FROM
 Users;
 
 
+/*  */
