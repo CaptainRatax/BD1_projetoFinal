@@ -20,7 +20,7 @@ namespace ProjetoBD.Pages
 			"SELECT Users.ID, [NIF], Users.Name, [Email], [PhoneN], [Password], Roles.Name as 'Role', Users.IsActive"
 			+ " FROM [Users]"
 			+ " INNER JOIN Roles ON Roles.ID = Users.RoleID"
-			+ $" WHERE Users.Name LIKE '%{textBox_name}%'";
+			+ $" WHERE Users.Name LIKE '%{textBox_name.Text}%'";
 			SqlData_Users.Select(DataSourceSelectArguments.Empty);
 			SqlData_Users.DataBind();
 		}
@@ -44,13 +44,18 @@ namespace ProjetoBD.Pages
 				"SELECT Users.ID, [NIF], Users.Name, [Email], [PhoneN], [Password], Roles.Name as 'Role', Users.IsActive"
 				+ " FROM [Users]"
 				+ " INNER JOIN Roles ON Roles.ID = Users.RoleID"
-				+ "WHERE 1 = 1";
+				+ " WHERE 1 = 1";
 			SqlData_Users.Select(DataSourceSelectArguments.Empty);
 			SqlData_Users.DataBind();
 		}
 
 		protected void button_save_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(textBox_nif.Text) || string.IsNullOrEmpty(textBox_editName.Text) || string.IsNullOrEmpty(textBox_email.Text) || string.IsNullOrEmpty(textBox_phoneNumber.Text) || string.IsNullOrEmpty(textBox_password.Text))
+			{
+				return;
+			}
+
 			if (string.IsNullOrEmpty(textBox_editId.Text))
 			{
 				SqlData_Users.InsertCommand =

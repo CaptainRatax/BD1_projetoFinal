@@ -15,7 +15,7 @@ namespace ProjetoBD.Pages
 		protected void button_filter_Click(object sender, EventArgs e)
 		{
 			SqlData_GeoCenters.SelectCommand =
-				"SELECT [ID], [Name], [Location]" +
+				"SELECT [ID], [Name], [Location], [IsActive]" +
 				" FROM GeoCenters" +
 				" WHERE Location = '" + listBox_locations.SelectedValue + "'";
 			SqlData_GeoCenters.Select(DataSourceSelectArguments.Empty);
@@ -24,18 +24,23 @@ namespace ProjetoBD.Pages
 
 		protected void button_clearFilters_Click(object sender, EventArgs e)
 		{
-			SqlData_GeoCenters.SelectCommand = "SELECT [ID], [Name], [Location] FROM GeoCenters WHERE 1 = 1";
+			SqlData_GeoCenters.SelectCommand = "SELECT [ID], [Name], [Location], [IsActive] FROM GeoCenters WHERE 1 = 1";
 			SqlData_GeoCenters.Select(DataSourceSelectArguments.Empty);
 			SqlData_GeoCenters.DataBind();
 		}
 
 		protected void button_save_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(textBox_name.Text) || string.IsNullOrEmpty(textBox_location.Text))
+			{
+				return;
+			}
+
 			if (string.IsNullOrEmpty(textBox_editId.Text))
 			{
 				SqlData_GeoCenters.InsertCommand =
-					"INSERT INTO [GeoCenters] (Name, Location)" +
-					$" VALUES ('{textBox_name.Text}', '{textBox_location.Text}')";
+					"INSERT INTO [GeoCenters] (Name, Location, IsActive)" +
+					$" VALUES ('{textBox_name.Text}', '{textBox_location.Text}', {Convert.ToInt32(checkBox_isActive.Checked)})";
 				SqlData_GeoCenters.Insert();
 			}
 			else
@@ -44,7 +49,7 @@ namespace ProjetoBD.Pages
 
 				SqlData_GeoCenters.UpdateCommand =
 					"UPDATE [GeoCenters]" +
-					$" SET Name = '{textBox_name.Text}', Location = '{textBox_location.Text}'" +
+					$" SET Name = '{textBox_name.Text}', Location = '{textBox_location.Text}', IsActive = '{Convert.ToInt32(checkBox_isActive.Checked)}'" +
 					$" WHERE ID = " + editId;
 				SqlData_GeoCenters.Update();
 			}
@@ -82,6 +87,7 @@ namespace ProjetoBD.Pages
 
 			textBox_name.Text = dt.Rows[0]["Name"].ToString();
 			textBox_location.Text = dt.Rows[0]["Location"].ToString();
+			checkBox_isActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
 		}
 
 		protected void button_clearEdit_Click(object sender, EventArgs e)
@@ -95,11 +101,12 @@ namespace ProjetoBD.Pages
 
 			textBox_name.Text = string.Empty;
 			textBox_location.Text = string.Empty;
+			checkBox_isActive.Checked = false;
 		}
 
 		private void RefreshLocations()
 		{
-			SqlData_Locations.SelectCommand = "SELECT DISTINCT [Location] FROM [GeoCenters]";
+			SqlData_Locations.SelectCommand = "SELECT DISTINCT [Location] FROM [GeoCenters] WHERE 1 = 1";
 			SqlData_Locations.Select(DataSourceSelectArguments.Empty);
 			SqlData_Locations.DataBind();
 		}

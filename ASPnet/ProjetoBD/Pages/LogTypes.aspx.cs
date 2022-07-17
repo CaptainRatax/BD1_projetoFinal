@@ -32,6 +32,11 @@ namespace ProjetoBD.Pages
 
 		protected void button_save_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(textBox_editName.Text))
+			{
+				return;
+			}
+
 			if (string.IsNullOrEmpty(textBox_editId.Text))
 			{
 				SqlData_LogTypes.InsertCommand =
@@ -71,7 +76,7 @@ namespace ProjetoBD.Pages
 			SqlData_LogTypes.SelectCommand =
 				"SELECT [ID], [Name] FROM [LogTypes]" +
 				$" WHERE ID = " + id;
-			
+
 			DataView dv = (DataView)SqlData_Editor.Select(DataSourceSelectArguments.Empty);
 			SqlData_Editor.DataBind();
 

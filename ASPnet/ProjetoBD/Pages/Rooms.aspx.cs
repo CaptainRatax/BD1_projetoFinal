@@ -34,6 +34,11 @@ namespace ProjetoBD.Pages
 
 		protected void button_save_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(textBox_name.Text) || string.IsNullOrEmpty(textBox_maximumCapacity.Text) || string.IsNullOrEmpty(textBox_restrictions.Text) || string.IsNullOrEmpty(textBox_cleaningTime.Text))
+			{
+				return;
+			}
+
 			if (string.IsNullOrEmpty(textBox_editId.Text))
 			{
 				SqlData_Rooms.InsertCommand =

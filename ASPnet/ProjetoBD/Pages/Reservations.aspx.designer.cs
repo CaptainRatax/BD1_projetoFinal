@@ -231,6 +231,15 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.DropDownList listBox_roomsInsert;
 
 		/// <summary>
+		/// checkBox_isActive control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_isActive;
+
+		/// <summary>
 		/// button_save control.
 		/// </summary>
 		/// <remarks>

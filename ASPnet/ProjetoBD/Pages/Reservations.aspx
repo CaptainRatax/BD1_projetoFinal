@@ -114,6 +114,10 @@ INNER JOIN Users ON Users.ID = Responsible"></asp:SqlDataSource>
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>Is Active:<asp:CheckBox ID="checkBox_isActive" runat="server" style="margin-left: 20px" />
+                    </td>
+            </tr>
+            <tr>
                 <td>
                     <asp:Button ID="button_save" runat="server" OnClick="button_save_Click" Text="Save" />
                     <asp:SqlDataSource ID="SqlData_Editor" runat="server" ConnectionString="<%$ ConnectionStrings:BDbEdi2021ConnectionString %>"></asp:SqlDataSource>

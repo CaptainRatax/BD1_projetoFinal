@@ -42,6 +42,11 @@ namespace ProjetoBD.Pages
 
 		protected void button_save_Click(object sender, EventArgs e)
 		{
+			if (string.IsNullOrEmpty(textBox_editCode.Text) || string.IsNullOrEmpty(textBox_editName.Text))
+			{
+				return;
+			}
+
 			if (string.IsNullOrEmpty(textBox_editId.Text))
 			{
 				SqlData_Roles.InsertCommand =

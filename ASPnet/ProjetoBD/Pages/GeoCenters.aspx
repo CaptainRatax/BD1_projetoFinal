@@ -83,6 +83,10 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
+            <tr>
+                <td>Is Active:<asp:CheckBox ID="checkBox_isActive" runat="server" style="margin-left: 20px" />
+                    </td>
+            </tr>
         </table>
         <table style="width:100%;">
             <tr>
