@@ -11,6 +11,22 @@
          <div>
             <table style="width:100%;">
                 <tr>
+                    <td>
+                        <asp:LinkButton ID="link_geoCenters" runat="server" PostBackUrl="~/Pages/GeoCenters.aspx">Geo Centers</asp:LinkButton>
+                        <asp:LinkButton ID="link_logs" runat="server" style="margin-left: 20px;" PostBackUrl="~/Pages/Logs.aspx">Logs</asp:LinkButton>
+                        <asp:LinkButton ID="link_logTypes" runat="server" style="margin-left: 20px;" PostBackUrl="~/Pages/LogTypes.aspx">Log Types</asp:LinkButton>
+                        <asp:LinkButton ID="link_reservations" runat="server" style="margin-left: 20px;" PostBackUrl="~/Pages/Reservations.aspx">Reservations</asp:LinkButton>
+                        <asp:LinkButton ID="link_roles" runat="server" style="margin-left: 20px;" PostBackUrl="~/Pages/Roles.aspx">Roles</asp:LinkButton>
+                        <asp:LinkButton ID="link_rooms" runat="server" style="margin-left: 20px;" PostBackUrl="~/Pages/Rooms.aspx">Rooms</asp:LinkButton>
+                        <asp:LinkButton ID="link_users" runat="server" style="margin-left: 20px;" PostBackUrl="~/Pages/Users.aspx">Users</asp:LinkButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+            <table style="width:100%;">
+                <tr>
                     <td>Room:<asp:DropDownList ID="listBox_rooms" runat="server" DataSourceID="SqlData_Rooms" DataTextField="Name" DataValueField="ID" style="margin-left: 20px">
                         </asp:DropDownList>
                     </td>
@@ -25,14 +41,13 @@
         </div>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlData_Rooms" DataKeyNames="ID" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
             <Columns>
-                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="MaximumCapacity" HeaderText="Maximum Capacity" SortExpression="MaximumCapacity" />
-                <asp:BoundField DataField="Restrictions" HeaderText="Restrictions" SortExpression="Restrictions" />
-                <asp:BoundField DataField="GeoCenter" HeaderText="GeoCenter" SortExpression="Name1" />
-                <asp:CheckBoxField DataField="IsCleaned" HeaderText="Is Cleaned" SortExpression="IsCleaned" />
-                <asp:BoundField DataField="CleaningTime" HeaderText="Cleaning Time" SortExpression="CleaningTime" />
-                <asp:BoundField DataField="IsActive" HeaderText="Is Active" SortExpression="IsActive" />
+                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" ReadOnly="true"/>
+                <asp:BoundField DataField="MaximumCapacity" HeaderText="Maximum Capacity" SortExpression="MaximumCapacity" ReadOnly="true"/>
+                <asp:BoundField DataField="Restrictions" HeaderText="Restrictions" SortExpression="Restrictions" ReadOnly="true"/>
+                <asp:BoundField DataField="GeoCenter" HeaderText="GeoCenter" SortExpression="Name1" ReadOnly="true"/>
+                <asp:CheckBoxField DataField="IsCleaned" HeaderText="Is Cleaned" SortExpression="IsCleaned" ReadOnly="true"/>
+                <asp:BoundField DataField="CleaningTime" HeaderText="Cleaning Time" SortExpression="CleaningTime" ReadOnly="true" />
+                <asp:CheckBoxField DataField="IsActive" HeaderText="Is Active" SortExpression="IsActive" ReadOnly="true"/>
                 <asp:ButtonField CommandName="Edit" HeaderText="Edit" ShowHeader="True" Text="Edit" />
                 <asp:ButtonField CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
             </Columns>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="ProjetoBD.Pages.Users" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Roles.aspx.cs" Inherits="ProjetoBD.Pages.Roles" %>
 
 <!DOCTYPE html>
 
@@ -27,15 +27,15 @@
             </table>
             <table style="width:100%;">
                 <tr>
-                    <td>Name:<asp:TextBox ID="textBox_name" runat="server" style="margin-left: 20px">
+                    <td>Code:<asp:TextBox ID="textBox_code" runat="server" TextMode="Number" style="margin-left: 20px; margin-right: 20px">
                         </asp:TextBox>
-                        <asp:Button ID="button_filterName" runat="server" Text="Filter by Name" OnClick="button_filterName_Click" style="margin-left: 20px" />
+                        <asp:Button ID="button_filterCode" runat="server" Text="Filter by Code" OnClick="button_filterCode_Click" />
                     </td>
                 </tr>
                 <tr>
-                    <td>Role:<asp:DropDownList ID="listBox_role" runat="server" DataSourceID="SqlData_Roles" DataTextField="Name" DataValueField="ID" style="margin-left: 20px">
-                        </asp:DropDownList>
-                        <asp:Button ID="button_filterRole" runat="server" Text="Filter by Role" OnClick="button_filterRole_Click" style="margin-left: 20px" />
+                    <td>Name:<asp:TextBox ID="textBox_name" runat="server" style="margin-left: 20px; margin-right: 20px">
+                        </asp:TextBox>
+                        <asp:Button ID="button_filterName" runat="server" Text="Filter by Name" OnClick="button_filterName_Click" />
                     </td>
                 </tr>
                 <tr>
@@ -47,24 +47,24 @@
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlData_Users" DataKeyNames="ID" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlData_Roles" DataKeyNames="ID" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
             <Columns>
-                <asp:BoundField DataField="NIF" HeaderText="NIF" SortExpression="NIF" ReadOnly="true" />
+                <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" ReadOnly="true" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" ReadOnly="true"/>
-                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" ReadOnly="true"/>
-                <asp:BoundField DataField="PhoneN" HeaderText="PhoneN" SortExpression="PhoneN" ReadOnly="true"/>
-                <asp:BoundField DataField="Role" HeaderText="Role" SortExpression="Role" ReadOnly="true"/>
-                <asp:CheckBoxField DataField="IsActive" HeaderText="IsActive" SortExpression="IsActive" ReadOnly="true"/>
+                <asp:CheckBoxField DataField="ReserveRooms" HeaderText="ReserveRooms" SortExpression="ReserveRooms" ReadOnly="true" />
+                <asp:CheckBoxField DataField="CreateRooms" HeaderText="CreateRooms" SortExpression="CreateRooms" ReadOnly="true"/>
+                <asp:CheckBoxField DataField="EditRooms" HeaderText="EditRooms" SortExpression="EditRooms" ReadOnly="true" />
+                <asp:CheckBoxField DataField="CreateGeoCenters" HeaderText="CreateGeoCenters" SortExpression="CreateGeoCenters" ReadOnly="true"/>
+                <asp:CheckBoxField DataField="EditGeoCenters" HeaderText="EditGeoCenters" SortExpression="EditGeoCenters" ReadOnly="true"/>
+                <asp:CheckBoxField DataField="CreateUsers" HeaderText="CreateUsers" SortExpression="CreateUsers" ReadOnly="true" />
+                <asp:CheckBoxField DataField="EditUsers" HeaderText="EditUsers" SortExpression="EditUsers" ReadOnly="true" />
+                <asp:CheckBoxField DataField="IsActive" HeaderText="IsActive" SortExpression="IsActive" ReadOnly="true" />
                 <asp:ButtonField CommandName="Edit" HeaderText="Edit" ShowHeader="True" Text="Edit" />
                 <asp:ButtonField CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlData_Users" runat="server" ConnectionString="<%$ ConnectionStrings:BDbEdi2021ConnectionString %>" SelectCommand="SELECT Users.ID, [NIF], Users.Name, [Email], [PhoneN], Roles.Name as 'Role', Users.IsActive
-FROM [Users]
-INNER JOIN Roles ON Roles.ID = Users.RoleID"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlData_Roles" runat="server" ConnectionString="<%$ ConnectionStrings:BDbEdi2021ConnectionString %>" SelectCommand="SELECT [ID], [Name] FROM [Roles]
-WHERE IsActive = 1"></asp:SqlDataSource>
-        Rols<table style="width:100%;">
+        <asp:SqlDataSource ID="SqlData_Roles" runat="server" ConnectionString="<%$ ConnectionStrings:BDbEdi2021ConnectionString %>" SelectCommand="SELECT [ID], [Code], [Name], [ReserveRooms], [CreateRooms], [EditRooms], [CreateGeoCenters], [EditGeoCenters], [CreateUsers], [EditUsers], [IsActive] FROM [Roles]"></asp:SqlDataSource>
+        <table style="width:100%;">
             <tr>
                 <td>&nbsp;</td>
             </tr>
@@ -77,7 +77,7 @@ WHERE IsActive = 1"></asp:SqlDataSource>
         </tr>
             <tr>
                 <td>
-                    NIF<asp:TextBox ID="textBox_nif" runat="server" style="margin-left: 20px" Width="162px" TextMode="Number"></asp:TextBox>
+                    Code<asp:TextBox ID="textBox_editCode" runat="server" style="margin-left: 20px" Width="162px" TextMode="Number"></asp:TextBox>
                     </td>
             </tr>
             <tr>
@@ -86,27 +86,31 @@ WHERE IsActive = 1"></asp:SqlDataSource>
                     </td>
             </tr>
             <tr>
-                <td>
-                    Email<asp:TextBox ID="textBox_email" runat="server" style="margin-left: 20px" Width="161px" TextMode="Email"></asp:TextBox>
+                <td>Reserve Rooms:<asp:CheckBox ID="checkBox_reserveRooms" runat="server" style="margin-left: 20px" />
                     </td>
             </tr>
             <tr>
-                <td>
-                    Phone Number<asp:TextBox ID="textBox_phoneNumber" runat="server" style="margin-left: 20px" Width="161px" TextMode="Phone"></asp:TextBox>
+                <td>Create Rooms:<asp:CheckBox ID="checkBox_createRooms" runat="server" style="margin-left: 20px" />
                     </td>
             </tr>
             <tr>
-                <td>
-                    Password<asp:TextBox ID="textBox_password" runat="server" style="margin-left: 20px" Width="161px" TextMode="Password"></asp:TextBox>
+                <td>Edit Rooms:<asp:CheckBox ID="checkBox_editRooms" runat="server" style="margin-left: 20px" />
                     </td>
             </tr>
             <tr>
-                <td>Is First Login:<asp:CheckBox ID="checkBox_isFirstLogin" runat="server" style="margin-left: 20px" />
+                <td>Create Geo Centers:<asp:CheckBox ID="checkBox_createGeoCenters" runat="server" style="margin-left: 20px" />
                     </td>
             </tr>
             <tr>
-                <td>Role:<asp:DropDownList ID="listBox_editRole" runat="server" DataSourceID="SqlData_Roles" DataTextField="Name" DataValueField="ID" style="margin-left: 20px">
-                        </asp:DropDownList>
+                <td>Edit Geo Centers:<asp:CheckBox ID="checkBox_editGeoCenters" runat="server" style="margin-left: 20px" />
+                    </td>
+            </tr>
+            <tr>
+                <td>Create Users:<asp:CheckBox ID="checkBox_createUsers" runat="server" style="margin-left: 20px" />
+                    </td>
+            </tr>
+            <tr>
+                <td>Edit Users:<asp:CheckBox ID="checkBox_editUsers" runat="server" style="margin-left: 20px" />
                     </td>
             </tr>
             <tr>

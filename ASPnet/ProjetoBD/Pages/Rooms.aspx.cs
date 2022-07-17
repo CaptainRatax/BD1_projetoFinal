@@ -15,7 +15,7 @@ namespace ProjetoBD.Pages
 		protected void button_filter_Click(object sender, EventArgs e)
 		{
 			SqlData_Rooms.SelectCommand =
-			"SELECT Rooms.ID, Rooms.Name, [MaximumCapacity], [Restrictions], GeoCenters.Name, [IsCleaned], Rooms.IsActive, [CleaningTime] FROM [Rooms]"
+			"SELECT Rooms.ID, Rooms.Name, [MaximumCapacity], [Restrictions], GeoCenters.Name AS 'GeoCenter', [IsCleaned], Rooms.IsActive, [CleaningTime] FROM [Rooms]"
 			+ " INNER JOIN GeoCenters ON Rooms.GeoCenter = GeoCenters.ID"
 			+ " WHERE Rooms.ID = " + listBox_rooms.SelectedValue;
 			SqlData_Rooms.Select(DataSourceSelectArguments.Empty);
@@ -25,8 +25,9 @@ namespace ProjetoBD.Pages
 		protected void button_clearFilters_Click(object sender, EventArgs e)
 		{
 			SqlData_Rooms.SelectCommand =
-				"SELECT Rooms.ID, Rooms.Name, [MaximumCapacity], [Restrictions], GeoCenters.Name, [IsCleaned], Rooms.IsActive, [CleaningTime] FROM [Rooms]"
-				+ " INNER JOIN GeoCenters ON Rooms.GeoCenter = GeoCenters.ID";
+				"SELECT Rooms.ID, Rooms.Name, [MaximumCapacity], [Restrictions], GeoCenters.Name AS 'GeoCenter', [IsCleaned], Rooms.IsActive, [CleaningTime] FROM [Rooms]"
+				+ " INNER JOIN GeoCenters ON Rooms.GeoCenter = GeoCenters.ID"
+				+ " WHERE 1 = 1";
 			SqlData_Rooms.Select(DataSourceSelectArguments.Empty);
 			SqlData_Rooms.DataBind();
 		}
@@ -58,7 +59,7 @@ namespace ProjetoBD.Pages
 		{
 			int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
 
-			SqlData_Rooms.DeleteCommand = $"DELETE FROM [Rooms] WHERE ID = {id}";
+			SqlData_Rooms.DeleteCommand = $"UPDATE [Rooms] SET IsActive = 0 WHERE ID = {id}";
 			SqlData_Rooms.Delete();
 			SqlData_Rooms.DataBind();
 		}

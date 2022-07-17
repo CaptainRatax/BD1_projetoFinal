@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\LogTypes.aspx" />
+    <Content Include="Pages\Roles.aspx" />
     <Content Include="Pages\Users.aspx" />
     <Content Include="Pages\GeoCenters.aspx" />
     <Content Include="Pages\Logs.aspx" />
@@ -75,6 +77,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\LogTypes.aspx.cs">
+      <DependentUpon>LogTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LogTypes.aspx.designer.cs">
+      <DependentUpon>LogTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Roles.aspx.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Roles.aspx.designer.cs">
+      <DependentUpon>Roles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

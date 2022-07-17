@@ -24,6 +24,69 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
+		/// link_geoCenters control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_geoCenters;
+
+		/// <summary>
+		/// link_logs control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_logs;
+
+		/// <summary>
+		/// link_logTypes control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_logTypes;
+
+		/// <summary>
+		/// link_reservations control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_reservations;
+
+		/// <summary>
+		/// link_roles control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_roles;
+
+		/// <summary>
+		/// link_rooms control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_rooms;
+
+		/// <summary>
+		/// link_users control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton link_users;
+
+		/// <summary>
 		/// textBox_name control.
 		/// </summary>
 		/// <remarks>
@@ -31,6 +94,15 @@ namespace ProjetoBD.Pages
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.TextBox textBox_name;
+
+		/// <summary>
+		/// button_filterName control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button button_filterName;
 
 		/// <summary>
 		/// listBox_role control.
@@ -42,13 +114,13 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.DropDownList listBox_role;
 
 		/// <summary>
-		/// button_filter control.
+		/// button_filterRole control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button button_filter;
+		protected global::System.Web.UI.WebControls.Button button_filterRole;
 
 		/// <summary>
 		/// button_clearFilters control.

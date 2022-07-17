@@ -11,7 +11,7 @@ namespace ProjetoBD.Pages
 {
 
 
-	public partial class Reservations
+	public partial class LogTypes
 	{
 
 		/// <summary>
@@ -87,40 +87,22 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.LinkButton link_users;
 
 		/// <summary>
-		/// listBox_users control.
+		/// textBox_name control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_users;
+		protected global::System.Web.UI.WebControls.TextBox textBox_name;
 
 		/// <summary>
-		/// button_filterUser control.
+		/// button_filterName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button button_filterUser;
-
-		/// <summary>
-		/// listBox_rooms control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_rooms;
-
-		/// <summary>
-		/// button_filterRoom control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button button_filterRoom;
+		protected global::System.Web.UI.WebControls.Button button_filterName;
 
 		/// <summary>
 		/// button_clearFilters control.
@@ -141,31 +123,13 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.GridView GridView1;
 
 		/// <summary>
-		/// SqlData_Reservations control.
+		/// SqlData_LogTypes control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Reservations;
-
-		/// <summary>
-		/// SqlData_Rooms control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Rooms;
-
-		/// <summary>
-		/// SqlData_Users control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Users;
+		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_LogTypes;
 
 		/// <summary>
 		/// textBox_editId control.
@@ -195,40 +159,13 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.Button button_clearAll;
 
 		/// <summary>
-		/// textBox_start control.
+		/// textBox_editName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox textBox_start;
-
-		/// <summary>
-		/// textBox_end control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox textBox_end;
-
-		/// <summary>
-		/// listBox_usersInsert control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_usersInsert;
-
-		/// <summary>
-		/// listBox_roomsInsert control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_roomsInsert;
+		protected global::System.Web.UI.WebControls.TextBox textBox_editName;
 
 		/// <summary>
 		/// button_save control.

@@ -12,26 +12,40 @@ namespace ProjetoBD.Pages
 
 		}
 
-		protected void button_filter_Click(object sender, EventArgs e)
+		protected void button_filterUser_Click(object sender, EventArgs e)
 		{
 			SqlData_Reservations.SelectCommand =
 				"SELECT Reservations.ID, StartDateTime AS 'Beginning', EndDateTime AS 'End', Users.Name AS 'Responsible', Rooms.Name AS 'Room'" +
 				" FROM Reservations" +
 				" INNER JOIN Rooms ON Rooms.ID = Reservations.Room" +
 				" INNER JOIN Users ON Users.ID = Reservations.Responsible" +
-				" WHERE Room = " + listBox_rooms.SelectedValue +
-				" AND Responsible = " + listBox_users.SelectedValue;
+				" WHERE Responsible = " + listBox_users.SelectedValue;
+			SqlData_Reservations.Select(DataSourceSelectArguments.Empty);
+			SqlData_Reservations.DataBind();
+		}
+
+		protected void button_filterRoom_Click(object sender, EventArgs e)
+		{
+			SqlData_Reservations.SelectCommand =
+				"SELECT Reservations.ID, StartDateTime AS 'Beginning', EndDateTime AS 'End', Users.Name AS 'Responsible', Rooms.Name AS 'Room'" +
+				" FROM Reservations" +
+				" INNER JOIN Rooms ON Rooms.ID = Reservations.Room" +
+				" INNER JOIN Users ON Users.ID = Reservations.Responsible" +
+				" WHERE Room = " + listBox_rooms.SelectedValue;
 			SqlData_Reservations.Select(DataSourceSelectArguments.Empty);
 			SqlData_Reservations.DataBind();
 		}
 
 		protected void button_clearFilters_Click(object sender, EventArgs e)
 		{
+			listBox_users.SelectedIndex = 0;
+			listBox_rooms.SelectedIndex = 0;
 			SqlData_Reservations.SelectCommand =
 				"SELECT Reservations.ID, StartDateTime AS 'Beginning', EndDateTime AS 'End', Users.Name AS 'Responsible', Rooms.Name AS 'Room'" +
 				" FROM Reservations" +
 				" INNER JOIN Rooms ON Rooms.ID = Room" +
-				" INNER JOIN Users ON Users.ID = Responsible";
+				" INNER JOIN Users ON Users.ID = Responsible" +
+				" WHERE 1 = 1";
 			SqlData_Reservations.Select(DataSourceSelectArguments.Empty);
 			SqlData_Reservations.DataBind();
 		}
@@ -63,7 +77,7 @@ namespace ProjetoBD.Pages
 		{
 			int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
 
-			SqlData_Reservations.DeleteCommand = $"DELETE FROM [Reservations] WHERE ID = {id}";
+			SqlData_Reservations.DeleteCommand = $"UPDATE [Reservations] SET IsActive = 0 WHERE ID = {id}";
 			SqlData_Reservations.Delete();
 			SqlData_Reservations.DataBind();
 		}

@@ -24,7 +24,7 @@ namespace ProjetoBD.Pages
 
 		protected void button_clearFilters_Click(object sender, EventArgs e)
 		{
-			SqlData_GeoCenters.SelectCommand = "SELECT [ID], [Name], [Location] FROM GeoCenters";
+			SqlData_GeoCenters.SelectCommand = "SELECT [ID], [Name], [Location] FROM GeoCenters WHERE 1 = 1";
 			SqlData_GeoCenters.Select(DataSourceSelectArguments.Empty);
 			SqlData_GeoCenters.DataBind();
 		}
@@ -57,7 +57,7 @@ namespace ProjetoBD.Pages
 		{
 			int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString());
 
-			SqlData_GeoCenters.DeleteCommand = $"DELETE FROM [GeoCenters] WHERE ID = {id}";
+			SqlData_GeoCenters.DeleteCommand = $"UPDATE [GeoCenters] SET IsActive = 0 WHERE ID = {id}";
 			SqlData_GeoCenters.Delete();
 			SqlData_GeoCenters.DataBind();
 			this.RefreshLocations();

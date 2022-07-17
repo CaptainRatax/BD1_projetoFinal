@@ -11,7 +11,7 @@ namespace ProjetoBD.Pages
 {
 
 
-	public partial class Reservations
+	public partial class Roles
 	{
 
 		/// <summary>
@@ -87,40 +87,40 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.LinkButton link_users;
 
 		/// <summary>
-		/// listBox_users control.
+		/// textBox_code control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_users;
+		protected global::System.Web.UI.WebControls.TextBox textBox_code;
 
 		/// <summary>
-		/// button_filterUser control.
+		/// button_filterCode control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button button_filterUser;
+		protected global::System.Web.UI.WebControls.Button button_filterCode;
 
 		/// <summary>
-		/// listBox_rooms control.
+		/// textBox_name control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_rooms;
+		protected global::System.Web.UI.WebControls.TextBox textBox_name;
 
 		/// <summary>
-		/// button_filterRoom control.
+		/// button_filterName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button button_filterRoom;
+		protected global::System.Web.UI.WebControls.Button button_filterName;
 
 		/// <summary>
 		/// button_clearFilters control.
@@ -141,31 +141,13 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.GridView GridView1;
 
 		/// <summary>
-		/// SqlData_Reservations control.
+		/// SqlData_Roles control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Reservations;
-
-		/// <summary>
-		/// SqlData_Rooms control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Rooms;
-
-		/// <summary>
-		/// SqlData_Users control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Users;
+		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Roles;
 
 		/// <summary>
 		/// textBox_editId control.
@@ -195,40 +177,94 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.Button button_clearAll;
 
 		/// <summary>
-		/// textBox_start control.
+		/// textBox_editCode control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox textBox_start;
+		protected global::System.Web.UI.WebControls.TextBox textBox_editCode;
 
 		/// <summary>
-		/// textBox_end control.
+		/// textBox_editName control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox textBox_end;
+		protected global::System.Web.UI.WebControls.TextBox textBox_editName;
 
 		/// <summary>
-		/// listBox_usersInsert control.
+		/// checkBox_reserveRooms control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_usersInsert;
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_reserveRooms;
 
 		/// <summary>
-		/// listBox_roomsInsert control.
+		/// checkBox_createRooms control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.DropDownList listBox_roomsInsert;
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_createRooms;
+
+		/// <summary>
+		/// checkBox_editRooms control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_editRooms;
+
+		/// <summary>
+		/// checkBox_createGeoCenters control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_createGeoCenters;
+
+		/// <summary>
+		/// checkBox_editGeoCenters control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_editGeoCenters;
+
+		/// <summary>
+		/// checkBox_createUsers control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_createUsers;
+
+		/// <summary>
+		/// checkBox_editUsers control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_editUsers;
+
+		/// <summary>
+		/// checkBox_isActive control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.CheckBox checkBox_isActive;
 
 		/// <summary>
 		/// button_save control.
