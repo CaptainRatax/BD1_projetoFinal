@@ -96,6 +96,33 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Users;
 
 		/// <summary>
+		/// textBox_editId control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox textBox_editId;
+
+		/// <summary>
+		/// button_clearEdit control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button button_clearEdit;
+
+		/// <summary>
+		/// button_clearAll control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button button_clearAll;
+
+		/// <summary>
 		/// textBox_start control.
 		/// </summary>
 		/// <remarks>
@@ -132,12 +159,21 @@ namespace ProjetoBD.Pages
 		protected global::System.Web.UI.WebControls.DropDownList listBox_roomsInsert;
 
 		/// <summary>
-		/// button_insert control.
+		/// button_save control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button button_insert;
+		protected global::System.Web.UI.WebControls.Button button_save;
+
+		/// <summary>
+		/// SqlData_Editor control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.SqlDataSource SqlData_Editor;
 	}
 }

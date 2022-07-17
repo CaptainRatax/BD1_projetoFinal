@@ -34,7 +34,7 @@
                 </tr>
             </table>
         </div>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlData_Reservations" DataKeyNames="ID" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlData_Reservations" DataKeyNames="ID" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
             <Columns>
                 <asp:BoundField DataField="Beginning" HeaderText="Beginning" SortExpression="Beginning" />
                 <asp:BoundField DataField="End" HeaderText="End" SortExpression="End" />
@@ -56,16 +56,25 @@ INNER JOIN Users ON Users.ID = Responsible"></asp:SqlDataSource>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
+        <tr>
+            <td>
+                Edit Id<asp:TextBox ID="textBox_editId" runat="server" style="margin-left: 20px; margin-right: 20px" ReadOnly="True" Width="53px"></asp:TextBox>
+                <asp:Button ID="button_clearEdit" runat="server" Text="Clear Id" OnClick="button_clearEdit_Click" style="margin-right: 20px" />
+                <asp:Button ID="button_clearAll" runat="server" Text="Clear All" OnClick="button_clearAll_Click" />
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
             <tr>
                 <td>
-                    StartTime<asp:TextBox ID="textBox_start" runat="server" style="margin-left: 20px; margin-right: 20px"></asp:TextBox>
+                    Start Time<asp:TextBox ID="textBox_start" runat="server" style="margin-left: 20px; margin-right: 20px" Width="172px"></asp:TextBox>
                     YYYY-MM-DD hh:mm:ss</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>
-                    EndTime<asp:TextBox ID="textBox_end" runat="server" style="margin-left: 20px; margin-right: 20px"></asp:TextBox>
+                    End Time<asp:TextBox ID="textBox_end" runat="server" style="margin-left: 20px; margin-right: 20px" Width="161px"></asp:TextBox>
                     YYYY-MM-DD hh:mm:ss</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -88,12 +97,13 @@ INNER JOIN Users ON Users.ID = Responsible"></asp:SqlDataSource>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="button_insert" runat="server" OnClick="button_insert_Click" Text="Insert" />
+                    <asp:Button ID="button_save" runat="server" OnClick="button_save_Click" Text="Save" />
+                    <asp:SqlDataSource ID="SqlData_Editor" runat="server" ConnectionString="<%$ ConnectionStrings:BDbEdi2021ConnectionString %>"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>
     </form>
-</body>
+    </body>
 </html>
